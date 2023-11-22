@@ -1,0 +1,16 @@
+.header {
+    background-color: #001d3d;
+    height: 35vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+
+}
+
+.header__title {
+    text-align: center;
+    color: white;
+    text-transform: uppercase;
+}

@@ -1,5 +1,9 @@
 import React from "react";
 import axios from "axios";
+import Container from "@mui/material/Container";
+
+import Header from "./components/Header/Header";
+import "./scss/style.scss";
 function App() {
   const [meanings, setMeanings] = React.useState([]);
   const [words, setWords] = React.useState("");
@@ -14,12 +18,17 @@ function App() {
     }
   };
   console.log("meanings", meanings);
-  console.log("words", words);
 
   React.useEffect(() => {
     apiCalling();
   }, []);
 
-  return <div>Dictionary APP</div>;
+  return (
+    <div className="app">
+      <Container maxWidth="sm">
+        <Header />
+      </Container>
+    </div>
+  );
 }
 export default App;
