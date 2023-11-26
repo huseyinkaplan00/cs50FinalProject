@@ -7,10 +7,15 @@
     justify-content: space-evenly;
     flex-direction: column;
 
-}
+    .header__title {
+        text-align: center;
+        color: white;
+        text-transform: uppercase;
+    }
 
-.header__title {
-    text-align: center;
-    color: white;
-    text-transform: uppercase;
+    .header__inputs {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+    }
 }

@@ -7,6 +7,7 @@ import "./scss/style.scss";
 function App() {
   const [meanings, setMeanings] = React.useState([]);
   const [words, setWords] = React.useState("");
+  const [allCategories, setAllCategories] = React.useState("English");
   const apiCalling = async () => {
     try {
       const data = await axios.get(
@@ -26,7 +27,10 @@ function App() {
   return (
     <div className="app">
       <Container maxWidth="sm">
-        <Header />
+        <Header
+          allCategories={allCategories}
+          setAllCategories={setAllCategories}
+        />
       </Container>
     </div>
   );
