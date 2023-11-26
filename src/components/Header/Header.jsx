@@ -6,7 +6,8 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
 import languagesList from "../Data/languages";
-const Header = ({ allCategories, setAllCategories }) => {
+
+const Header = ({ allCategories, setAllCategories, words, setWords }) => {
   const darkTheme = createTheme({
     palette: {
       mode: "dark",
@@ -16,12 +17,7 @@ const Header = ({ allCategories, setAllCategories }) => {
     },
   });
 
-  const [languages, setLanguages] = React.useState("");
   const [open, setOpen] = React.useState(false);
-
-  const handleChange = (event) => {
-    setLanguages(event.target.value);
-  };
 
   const handleClose = () => {
     setOpen(false);
@@ -30,9 +26,14 @@ const Header = ({ allCategories, setAllCategories }) => {
   const handleOpen = () => {
     setOpen(true);
   };
+
+  const handleChangeCategory = (chosenLanguage) => {
+    setAllCategories(chosenLanguage);
+    setWords("");
+  };
   return (
     <div className="header">
-      <h1 className="header__title">Your Dictionary</h1>
+      <h1 className="header__title"> {words ? words : "Your Dictionary"} </h1>
       <div className="header__inputs">
         <ThemeProvider theme={darkTheme}>
           <FormControl>
@@ -45,9 +46,9 @@ const Header = ({ allCategories, setAllCategories }) => {
               open={open}
               onClose={handleClose}
               onOpen={handleOpen}
-              value={languages}
+              value={allCategories}
               label="Languages"
-              onChange={handleChange}
+              onChange={(event) => handleChangeCategory(event.target.value)}
             >
               {languagesList.map((language) => (
                 <MenuItem value={language.label} key={language.label}>
@@ -66,11 +67,10 @@ const Header = ({ allCategories, setAllCategories }) => {
             label="Write Your Word"
             multiline
             maxRows={4}
+            value={words}
             variant="filled"
-            onChange={(event) => setAllCategories(event.target.value)}
+            onChange={(event) => setWords(event.target.value)}
           />
-
-          {console.log(allCategories)}
         </ThemeProvider>
       </div>
     </div>

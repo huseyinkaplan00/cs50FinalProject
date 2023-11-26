@@ -1,28 +1,27 @@
 import React from "react";
-import axios from "axios";
+import axios, { all } from "axios";
 import Container from "@mui/material/Container";
-
+import Defines from "./components/Header/Defines/Defines";
 import Header from "./components/Header/Header";
 import "./scss/style.scss";
 function App() {
   const [meanings, setMeanings] = React.useState([]);
+  const [allCategories, setAllCategories] = React.useState("en");
   const [words, setWords] = React.useState("");
-  const [allCategories, setAllCategories] = React.useState("English");
   const apiCalling = async () => {
     try {
       const data = await axios.get(
-        "https://api.dictionaryapi.dev/api/v2/entries/en/hello"
+        `https://api.dictionaryapi.dev/api/v2/entries/${allCategories}/${words}`
       );
       setMeanings(data.data);
     } catch (error) {
       console.log(error);
     }
   };
-  console.log("meanings", meanings);
 
   React.useEffect(() => {
     apiCalling();
-  }, []);
+  }, [words, allCategories]);
 
   return (
     <div className="app">
@@ -30,6 +29,13 @@ function App() {
         <Header
           allCategories={allCategories}
           setAllCategories={setAllCategories}
+          words={words}
+          setWords={setWords}
+        />
+        <Defines
+          meanings={meanings}
+          words={words}
+          allCategories={allCategories}
         />
       </Container>
     </div>
