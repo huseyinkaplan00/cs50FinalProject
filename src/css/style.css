@@ -37,5 +37,6 @@ body {
 
 .app {
   background-color: #001d3d;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
 }/*# sourceMappingURL=style.css.map */
