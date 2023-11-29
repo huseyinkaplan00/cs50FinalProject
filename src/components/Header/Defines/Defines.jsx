@@ -1,9 +1,9 @@
 import { all } from "axios";
 import React from "react";
 import PropTypes from "prop-types";
+import IconButton from "@mui/material/IconButton";
+import VolumeDownIcon from "@mui/icons-material/VolumeDown";
 const Defines = ({ words, allCategories, meanings }) => {
-  // getting link of the worlds to set src in a tags.
-  const [linkOfTheWords, setLinkOfTheWords] = React.useState("");
   const playAudio = (audio) => {
     const audioLink = new Audio(audio);
     audioLink.play();
@@ -15,11 +15,27 @@ const Defines = ({ words, allCategories, meanings }) => {
       ) : (
         meanings.map((mean) => {
           const wordsLink = mean.sourceUrls.map((item) => (item ? item : "#"));
-          const audioLink = mean.phonetics.map((item) => item.audio);
+          const audioLink = mean.phonetics.map((item, index) => {
+            console.log(item.audio);
+            return item.audio ? (
+              <>
+                <span>{index}</span>
 
+                <IconButton
+                  key={index}
+                  onClick={() => playAudio(item.audio)}
+                  aria-label="delete"
+                >
+                  <VolumeDownIcon />
+                </IconButton>
+              </>
+            ) : null;
+          });
+          console.log(audioLink);
           return mean.meanings.map((item, index) => (
             <div key={index}>
               <div className="word__header">
+                {audioLink ? audioLink : null}
                 <span className="defines--part-of-spech">
                   <a href={wordsLink}> {mean.word} </a> (
                   {item.partOfSpeech ? item.partOfSpeech : "🥲"})
