@@ -9,55 +9,70 @@ const Defines = ({ words, allCategories, meanings }) => {
   return (
     <div className="defines">
       {words === "" ? (
-        <div>Search a word</div>
+        <div className="defines--home">Type your word</div>
       ) : (
         meanings.map((mean) => {
-          const wordsLink = mean.sourceUrls.map((item) => (item ? item : "#"));
+          const wordsLink = mean.sourceUrls.map((item) => (item ? item : ""));
           const audioLink = mean.phonetics.map((item, index) => {
-            console.log(item.audio);
-            return item.audio ? (
-              <>
-                <span>{index}</span>
-
-                <IconButton
-                  key={index}
-                  onClick={() => playAudio(item.audio)}
-                  aria-label="delete"
-                >
-                  <VolumeDownIcon />
-                </IconButton>
-              </>
-            ) : null;
+            return (
+              <IconButton
+                style={{ color: "#fff" }}
+                key={index}
+                onClick={() => playAudio(item.audio)}
+                aria-label="delete"
+              >
+                <VolumeDownIcon />
+              </IconButton>
+            );
           });
-          console.log(audioLink);
-          return mean.meanings.map((item, index) => (
-            <div key={index}>
-              <div className="word__header">
-                {audioLink ? audioLink : null}
-                <span className="defines--part-of-spech">
-                  <a href={wordsLink}> {mean.word} </a> (
-                  {item.partOfSpeech ? item.partOfSpeech : "🥲"})
-                </span>
-              </div>
-              <div className="defines--definitions">
-                {item.definitions.map((def, index) => (
-                  <div key={index} className="defines-definitions-single-word">
-                    <h4>Definition : </h4>
-                    {def.definition}
-                    <br />
-                    {def.example && (
-                      <div className="examples">
-                        <span className="examples">
-                          <b>Example:</b>
-                          <p>{def.example}</p>
+
+          return mean.meanings.map((item, index) => {
+            return (
+              <div key={index}>
+                <div
+                  style={{ margin: audioLink.length > 0 ? "" : "10px" }}
+                  className="word__header"
+                >
+                  {audioLink ? audioLink : null}
+                  <span className="defines--part-of-spech">
+                    <a href={wordsLink}> {mean.word} </a> (
+                    <span>
+                      {" "}
+                      {item.partOfSpeech ? item.partOfSpeech : "🥲"})
+                    </span>
+                  </span>
+                </div>
+                <div className="defines--definitions">
+                  {item.definitions.map((def, index) => (
+                    <div
+                      key={index}
+                      className="defines-definitions-single-word"
+                    >
+                      <h4>Definition : </h4>
+                      {def.definition}
+                      <br />
+                      {def.example && (
+                        <div className="examples">
+                          <span className="examples">
+                            <b>Example:</b>
+                            <p>{def.example}</p>
+                          </span>
+                        </div>
+                      )}
+                      {def.synonyms.length > 0 && (
+                        <span>
+                          <b>Synonyms :</b>{" "}
+                          {def.synonyms.map((s) => {
+                            return `${s},`;
+                          })}{" "}
                         </span>
-                      </div>
-                    )}
-                  </div>
-                ))}
+                      )}
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          ));
+            );
+          });
         })
       )}
     </div>

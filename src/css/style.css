@@ -11,7 +11,7 @@
 .header .header__title {
   text-align: center;
   color: white;
-  text-transform: uppercase;
+  font-weight: 500;
 }
 .header .header__inputs {
   display: flex;
@@ -19,8 +19,46 @@
   gap: 1em;
 }
 
-.defines {
-  color: rgb(242, 240, 240) !important;
+.defines .defines--part-of-spech {
+  color: white;
+}
+.defines .defines--part-of-spech a {
+  color: white;
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 1px dashed white;
+  padding-bottom: 2px;
+}
+.defines .defines-definitions-single-word {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.412);
+  border-radius: 5px;
+  border: 1px solid black;
+  padding: 5px;
+  margin: 5px;
+  box-shadow: 0 0 5px black;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.defines--home {
+  font-size: 3rem;
+  background-color: rgba(255, 255, 255, 0.412);
+  border-radius: 5px;
+  border: 1px solid black;
+  padding: 5px;
+  margin: 5px;
+  box-shadow: 0 0 5px black;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 *,

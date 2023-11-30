@@ -1,3 +1,60 @@
-.defines {
-    color: rgb(242, 240, 240) !important;
+@mixin box($height) {
+    background-color: rgba(255, 255, 255, 0.412);
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 5px;
+    margin: 5px;
+    box-shadow: 0 0 5px black;
+    height: $height;
 }
+
+@mixin flexElement($direction, $justify, $align) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+    text-align: center;
+}
+
+@mixin linkTypography() {
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 1px dashed white;
+    padding-bottom: 2px;
+    ;
+}
+
+.defines {
+
+
+    .defines--part-of-spech {
+        color: white;
+
+        a {
+            @include linkTypography();
+        }
+    }
+
+    .defines-definitions-single-word {
+
+
+        color: white;
+        @include box($height: auto);
+        @include flexElement($direction: column, $justify: center, $align: center);
+
+    }
+
+
+
+
+}
+
+.defines--home {
+    font-size: 3rem;
+    @include box($height: 300px);
+    @include flexElement($direction: column, $justify: center, $align: center);
+
+}
+
+// box mixin 
