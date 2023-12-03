@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,800;1,300&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 .header {
-  background-color: #001d3d;
   height: 35vh;
   width: 100%;
   display: flex;
@@ -8,10 +7,17 @@
   justify-content: space-evenly;
   flex-direction: column;
 }
-.header .header__title {
+.header a {
+  text-decoration: none;
+}
+.header a .header__title {
   text-align: center;
-  color: white;
+  color: #4d83bd;
   font-weight: 500;
+  transition: all 0.3s ease-in-out;
+}
+.header a .header__title:hover {
+  color: rgb(118, 104, 151);
 }
 .header .header__inputs {
   display: flex;
@@ -20,6 +26,7 @@
 }
 
 .defines .defines--part-of-spech {
+  display: inline-block;
   color: white;
 }
 .defines .defines--part-of-spech a {
@@ -29,9 +36,14 @@
   border-bottom: 1px dashed white;
   padding-bottom: 2px;
 }
+.defines .defines--part-of-spech em {
+  color: rgb(118, 104, 151);
+  margin-left: 0.5em;
+  text-shadow: 0px 2px 8px black;
+  font-weight: 300;
+  letter-spacing: 5px;
+}
 .defines .defines-definitions-single-word {
-  color: white;
-  background-color: rgba(255, 255, 255, 0.412);
   border-radius: 5px;
   border: 1px solid black;
   padding: 5px;
@@ -44,12 +56,19 @@
   align-items: center;
   text-align: center;
 }
+.defines .defines-definitions-single-word--dark {
+  background-color: #001d3d;
+  color: white;
+}
+.defines .defines-definitions-single-word--light {
+  background-color: rgba(7, 7, 7, 0.42);
+  color: dark;
+}
 
 .defines--home {
   font-size: 3rem;
-  background-color: rgba(255, 255, 255, 0.412);
   border-radius: 5px;
-  border: 1px solid black;
+  border: 3px solid white;
   padding: 5px;
   margin: 5px;
   box-shadow: 0 0 5px black;
@@ -74,7 +93,27 @@ body {
 }
 
 .app {
-  background-color: #001d3d;
   min-height: 100vh;
   height: 100%;
+  position: relative;
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+.app .app--theme {
+  position: absolute;
+  top: 1em;
+  right: 10px;
+}
+.app.dark-mode {
+  background-color: #001d3d;
+  color: #fff;
+}
+.app.light-mode {
+  background-color: #f0eded;
+  color: #000;
+}
+
+.app-light {
+  color: #000;
+  background-color: #fafafa;
+  transition: all 0.5s ease-in-out;
 }/*# sourceMappingURL=style.css.map */

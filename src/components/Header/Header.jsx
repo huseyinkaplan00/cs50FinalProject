@@ -7,12 +7,18 @@ import Select from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
 import languagesList from "../Data/languages";
 
-const Header = ({ allCategories, setAllCategories, words, setWords }) => {
+const Header = ({
+  allCategories,
+  setAllCategories,
+  words,
+  setWords,
+  darkMode,
+}) => {
   const darkTheme = createTheme({
     palette: {
-      mode: "dark",
+      mode: darkMode ? "dark" : "light",
       primary: {
-        main: "#fff",
+        main: darkMode ? "#fff" : "#000",
       },
     },
   });
@@ -33,7 +39,10 @@ const Header = ({ allCategories, setAllCategories, words, setWords }) => {
   };
   return (
     <div className="header">
-      <h1 className="header__title"> {words ? words : "Your Dictionary"} </h1>
+      <a href="index.html">
+        {" "}
+        <h1 className="header__title"> {words ? words : "Your Dictionary"} </h1>
+      </a>
       <div className="header__inputs">
         <ThemeProvider theme={darkTheme}>
           <FormControl>

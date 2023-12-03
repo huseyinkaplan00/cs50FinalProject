@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
 import IconButton from "@mui/material/IconButton";
 import VolumeDownIcon from "@mui/icons-material/VolumeDown";
-const Defines = ({ words, allCategories, meanings }) => {
+
+const Defines = ({ words, meanings, Defines }) => {
   const playAudio = (audio) => {
     const audioLink = new Audio(audio);
     audioLink.play();
@@ -12,17 +13,20 @@ const Defines = ({ words, allCategories, meanings }) => {
         <div className="defines--home">Type your word</div>
       ) : (
         meanings.map((mean) => {
+          console.log(mean.phonetic); // burada phoneticler geliyor ama kelime şeklinde almalıyız ve her birini ayrı ayrı kullanmalıyız.
           const wordsLink = mean.sourceUrls.map((item) => (item ? item : ""));
           const audioLink = mean.phonetics.map((item, index) => {
             return (
-              <IconButton
-                style={{ color: "#fff" }}
-                key={index}
-                onClick={() => playAudio(item.audio)}
-                aria-label="delete"
-              >
-                <VolumeDownIcon />
-              </IconButton>
+              item.audio && (
+                <IconButton
+                  style={{ color: "#fff" }}
+                  key={index}
+                  onClick={() => playAudio(item.audio)}
+                  aria-label="delete"
+                >
+                  <VolumeDownIcon />
+                </IconButton>
+              )
             );
           });
 
@@ -34,13 +38,16 @@ const Defines = ({ words, allCategories, meanings }) => {
                   className="word__header"
                 >
                   {audioLink ? audioLink : null}
-                  <span className="defines--part-of-spech">
+                  <div className="defines--part-of-spech">
                     <a href={wordsLink}> {mean.word} </a> (
                     <span>
                       {" "}
                       {item.partOfSpeech ? item.partOfSpeech : "🥲"})
                     </span>
-                  </span>
+                    {meanings.map((item, index) => (
+                      <em key={index}>{item.phonetic ? item.phonetic : ""}</em>
+                    ))}
+                  </div>
                 </div>
                 <div className="defines--definitions">
                   {item.definitions.map((def, index) => (
@@ -48,15 +55,16 @@ const Defines = ({ words, allCategories, meanings }) => {
                       key={index}
                       className="defines-definitions-single-word"
                     >
-                      <h4>Definition : </h4>
-                      {def.definition}
-                      <br />
+                      <div className="  ">
+                        <h4>Definition : </h4>
+                        <p>{def.definition}</p>
+                      </div>
                       {def.example && (
                         <div className="examples">
-                          <span className="examples">
-                            <b>Example:</b>
+                          <div className="examples">
+                            <h4>Example:</h4>
                             <p>{def.example}</p>
-                          </span>
+                          </div>
                         </div>
                       )}
                       {def.synonyms.length > 0 && (

@@ -14,9 +14,35 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
+
 .app {
-    background-color: #001d3d;
     min-height: 100vh;
     height: 100%;
+    position: relative;
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
 
+
+    //button for light to dark theme
+    .app--theme {
+        position: absolute;
+        top: 1em;
+        right: 10px;
+    }
+
+    &.dark-mode {
+        background-color: #001d3d;
+        color: #fff;
+    }
+
+    &.light-mode {
+        background-color: #f0eded;
+        color: #000;
+    }
+
+}
+
+.app-light {
+    color: #000;
+    background-color: #fafafa;
+    transition: all 0.5s ease-in-out;
 }

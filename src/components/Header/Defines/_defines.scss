@@ -1,11 +1,13 @@
-@mixin box($height) {
-    background-color: rgba(255, 255, 255, 0.412);
+@mixin box($height, $border) {
+
     border-radius: 5px;
-    border: 1px solid black;
+    border: $border;
     padding: 5px;
     margin: 5px;
     box-shadow: 0 0 5px black;
     height: $height;
+
+
 }
 
 @mixin flexElement($direction, $justify, $align) {
@@ -29,20 +31,36 @@
 
 
     .defines--part-of-spech {
+        display: inline-block;
         color: white;
 
         a {
             @include linkTypography();
         }
+
+        em {
+            color: rgb(118 104 151);
+            margin-left: 0.5em;
+            text-shadow: 0px 2px 8px black;
+            font-weight: 300;
+            letter-spacing: 5px;
+        }
     }
 
     .defines-definitions-single-word {
 
-
-        color: white;
-        @include box($height: auto);
+        @include box($height: auto, $border: 1px solid black);
         @include flexElement($direction: column, $justify: center, $align: center);
 
+        &--dark {
+            background-color: #001d3d;
+            color: white;
+        }
+
+        &--light {
+            background-color: rgb(7 7 7 / 42%);
+            color: dark;
+        }
     }
 
 
@@ -52,7 +70,7 @@
 
 .defines--home {
     font-size: 3rem;
-    @include box($height: 300px);
+    @include box($height: 300px, $border: 3px solid white);
     @include flexElement($direction: column, $justify: center, $align: center);
 
 }
