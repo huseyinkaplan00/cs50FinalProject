@@ -84,7 +84,12 @@ function App() {
   };
 
   React.useEffect(() => {
-    apiCalling();
+    if (words && words.length > 0) {
+      apiCalling();
+    } else {
+      setMeanings([]);
+      setError("");
+    }
   }, [words, allCategories]);
 
   return (
@@ -115,7 +120,7 @@ function App() {
         />
         <Defines
           meanings={meanings}
-          words={words}
+          words={words} // input value
           darkMode={darkMode}
           error={error}
         />

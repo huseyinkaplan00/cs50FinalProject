@@ -25,6 +25,10 @@
 }
 
 .defines {
+    overflow-x: scroll;
+    max-height: 500px;
+    height: 100%;
+
     .word__header {
         display: flex;
         flex-direction: row;

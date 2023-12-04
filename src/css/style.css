@@ -25,6 +25,11 @@
   gap: 1em;
 }
 
+.defines {
+  overflow-x: scroll;
+  max-height: 500px;
+  height: 100%;
+}
 .defines .word__header {
   display: flex;
   flex-direction: row;
