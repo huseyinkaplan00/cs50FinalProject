@@ -25,16 +25,38 @@
   gap: 1em;
 }
 
+.defines .word__header {
+  display: flex;
+  flex-direction: row;
+}
 .defines .defines--part-of-spech {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   color: white;
 }
-.defines .defines--part-of-spech a {
+.defines .defines--part-of-spech--light-mode {
+  color: #4d83bd;
+}
+.defines .defines--part-of-spech--dark-mode {
   color: white;
+}
+.defines .defines--part-of-spech .defines--part-of-spech--link {
   font-weight: 700;
   text-decoration: none;
   border-bottom: 1px dashed white;
   padding-bottom: 2px;
+  margin: 0.6em 0.7em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.defines .defines--part-of-spech .defines--part-of-spech--link--dark-mode {
+  color: white;
+}
+.defines .defines--part-of-spech .defines--part-of-spech--link--light-mode {
+  color: black;
 }
 .defines .defines--part-of-spech em {
   color: rgb(118, 104, 151);
@@ -44,17 +66,12 @@
   letter-spacing: 5px;
 }
 .defines .defines-definitions-single-word {
+  margin: 1em 0.5em;
+  padding: 0.7em;
   border-radius: 5px;
   border: 1px solid black;
-  padding: 5px;
-  margin: 5px;
   box-shadow: 0 0 5px black;
   height: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
 }
 .defines .defines-definitions-single-word--dark {
   background-color: #001d3d;
@@ -69,8 +86,6 @@
   font-size: 3rem;
   border-radius: 5px;
   border: 3px solid white;
-  padding: 5px;
-  margin: 5px;
   box-shadow: 0 0 5px black;
   height: 300px;
   display: flex;

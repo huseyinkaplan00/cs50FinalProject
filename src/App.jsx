@@ -15,6 +15,7 @@ function App() {
   const [words, setWords] = React.useState("");
   const [darkMode, setDarkMode] = React.useState(true);
   const appClass = darkMode ? "app dark-mode" : "app light-mode";
+  const [error, setError] = React.useState("");
   //creating dark mode's switch button with material ui
   const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     width: 62,
@@ -70,8 +71,15 @@ function App() {
         `https://api.dictionaryapi.dev/api/v2/entries/${allCategories}/${words}`
       );
       setMeanings(data.data);
+      setError("");
     } catch (error) {
-      console.log(error);
+      if (error.response && error.response.status === 404) {
+        setError("Sorry, we couldn't find any results for that search.");
+      } else {
+        setError(
+          "Sorry, we can't get any results right now. Please try again later."
+        );
+      }
     }
   };
 
@@ -105,7 +113,12 @@ function App() {
           words={words}
           setWords={setWords}
         />
-        <Defines meanings={meanings} words={words} darkMode={darkMode} />
+        <Defines
+          meanings={meanings}
+          words={words}
+          darkMode={darkMode}
+          error={error}
+        />
       </Container>
     </div>
   );

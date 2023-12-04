@@ -2,16 +2,20 @@ import PropTypes from "prop-types";
 import IconButton from "@mui/material/IconButton";
 import VolumeDownIcon from "@mui/icons-material/VolumeDown";
 
-const Defines = ({ words, meanings, Defines }) => {
+const Defines = ({ words, meanings, darkMode, error }) => {
   const playAudio = (audio) => {
     const audioLink = new Audio(audio);
     audioLink.play();
   };
   return (
     <div className="defines">
+      {error && ( // if error is true, then show the error message.
+        <div className="defines--error">{error}</div>
+      )}
       {words === "" ? (
         <div className="defines--home">Type your word</div>
       ) : (
+        error === "" &&
         meanings.map((mean) => {
           console.log(mean.phonetic); // burada phoneticler geliyor ama kelime şeklinde almalıyız ve her birini ayrı ayrı kullanmalıyız.
           const wordsLink = mean.sourceUrls.map((item) => (item ? item : ""));
@@ -19,7 +23,7 @@ const Defines = ({ words, meanings, Defines }) => {
             return (
               item.audio && (
                 <IconButton
-                  style={{ color: "#fff" }}
+                  style={{ color: darkMode ? "#fff" : "#000" }}
                   key={index}
                   onClick={() => playAudio(item.audio)}
                   aria-label="delete"
@@ -38,8 +42,25 @@ const Defines = ({ words, meanings, Defines }) => {
                   className="word__header"
                 >
                   {audioLink ? audioLink : null}
-                  <div className="defines--part-of-spech">
-                    <a href={wordsLink}> {mean.word} </a> (
+                  <div
+                    className={`defines--part-of-spech ${
+                      darkMode
+                        ? "defines--part-of-spech--dark-mode"
+                        : "defines--part-of-spech--light-mode"
+                    }`}
+                  >
+                    <a
+                      className={`defines--part-of-spech--link  ${
+                        darkMode
+                          ? "defines--part-of-spech--link--dark-mode"
+                          : "defines--part-of-spech--link--light-mode"
+                      } `}
+                      href={wordsLink}
+                    >
+                      {" "}
+                      {mean.word}{" "}
+                    </a>{" "}
+                    (
                     <span>
                       {" "}
                       {item.partOfSpeech ? item.partOfSpeech : "🥲"})
@@ -55,7 +76,7 @@ const Defines = ({ words, meanings, Defines }) => {
                       key={index}
                       className="defines-definitions-single-word"
                     >
-                      <div className="  ">
+                      <div>
                         <h4>Definition : </h4>
                         <p>{def.definition}</p>
                       </div>
@@ -90,8 +111,9 @@ const Defines = ({ words, meanings, Defines }) => {
 // declaring prop types for type checking.
 Defines.propTypes = {
   words: PropTypes.string.isRequired,
-  allCategories: PropTypes.string.isRequired,
   meanings: PropTypes.array.isRequired,
+  darkMode: PropTypes.bool.isRequired,
+  error: PropTypes.string.isRequired,
 };
 
 export default Defines;
