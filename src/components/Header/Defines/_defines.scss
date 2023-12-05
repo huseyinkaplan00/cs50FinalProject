@@ -25,9 +25,13 @@
 }
 
 .defines {
-    overflow-x: scroll;
     max-height: 500px;
     height: 100%;
+    overflow-y: scroll;
+
+    .defines--home {
+        overflow: unset;
+    }
 
     .word__header {
         display: flex;

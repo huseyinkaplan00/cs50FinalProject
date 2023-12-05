@@ -7,6 +7,7 @@ import { styled } from "@mui/material/styles";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
+import Home from "./components/Home/Home";
 
 import "./scss/style.scss";
 function App() {
@@ -118,12 +119,16 @@ function App() {
           words={words}
           setWords={setWords}
         />
-        <Defines
-          meanings={meanings}
-          words={words} // input value
-          darkMode={darkMode}
-          error={error}
-        />
+        {words === "" ? (
+          <Home words={words} />
+        ) : (
+          <Defines
+            meanings={meanings}
+            words={words} // input value
+            darkMode={darkMode}
+            error={error}
+          />
+        )}
       </Container>
     </div>
   );

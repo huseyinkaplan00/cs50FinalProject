@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import IconButton from "@mui/material/IconButton";
 import VolumeDownIcon from "@mui/icons-material/VolumeDown";
 
-const Defines = ({ words, meanings, darkMode, error }) => {
+const Defines = ({ meanings, darkMode, error }) => {
   const playAudio = (audio) => {
     const audioLink = new Audio(audio);
     audioLink.play();
@@ -12,10 +12,7 @@ const Defines = ({ words, meanings, darkMode, error }) => {
       {error && ( // if error is true, then show the error message.
         <div className="defines--error">{error}</div>
       )}
-      {words === "" ? (
-        <div className="defines--home">Type your word</div>
-      ) : (
-        error === "" &&
+      {error === "" &&
         meanings.map((mean) => {
           console.log(mean.phonetic); // burada phoneticler geliyor ama kelime şeklinde almalıyız ve her birini ayrı ayrı kullanmalıyız.
           const wordsLink = mean.sourceUrls.map((item) => (item ? item : ""));
@@ -102,8 +99,7 @@ const Defines = ({ words, meanings, darkMode, error }) => {
               </div>
             );
           });
-        })
-      )}
+        })}
     </div>
   );
 };
