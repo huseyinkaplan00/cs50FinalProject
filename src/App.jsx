@@ -10,7 +10,6 @@ import Switch from '@mui/material/Switch';
 import Home from './components/Home/Home';
 
 import './scss/style.scss';
-import { get, set } from 'lodash';
 function App() {
   const [meanings, setMeanings] = React.useState([]);
   const [allCategories, setAllCategories] = React.useState('en');
