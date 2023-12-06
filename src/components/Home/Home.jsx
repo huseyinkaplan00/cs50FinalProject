@@ -1,8 +1,6 @@
-import React from 'react';
-import axios from 'axios';
 import Marquee from 'react-marquee-slider';
-import times from 'lodash/times';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 export default function Home({ wordMeanings }) {
   const filteredWordMeanings = wordMeanings.filter(wordMeaning => wordMeaning.meaning !== 'Definition not available');
@@ -42,3 +40,8 @@ export default function Home({ wordMeanings }) {
     </Container>
   );
 }
+
+// // declaring prop types for type checking.
+Home.propTypes = {
+  wordMeanings: PropTypes.array.isRequired
+};
