@@ -1,27 +1,13 @@
-import React from "react";
-import axios from "axios";
-import Marquee from "react-marquee-slider";
-import times from "lodash/times";
-import styled from "styled-components";
+import React from 'react';
+import axios from 'axios';
+import Marquee from 'react-marquee-slider';
+import times from 'lodash/times';
+import styled from 'styled-components';
 
-export default function Home({ words }) {
-  const [randomWords, setRandomWords] = React.useState([]);
-  const apiCall = async () => {
-    try {
-      const data = await axios.get(
-        `https://random-word-api.herokuapp.com/word?number=10`
-      );
-      setRandomWords(data.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  console.log(randomWords);
+export default function Home({ wordMeanings }) {
+  const filteredWordMeanings = wordMeanings.filter(wordMeaning => wordMeaning.meaning !== 'Definition not available');
 
-  React.useEffect(() => {
-    apiCall();
-  }, []);
-
+  //styled components:
   const Container = styled.div`
     width: 100%;
     overflow: hidden;
@@ -30,23 +16,26 @@ export default function Home({ words }) {
     flex-direction: row;
   `;
   const WordBox = styled.div`
+    border-radius: 5px;
     display: grid;
     place-items: center;
-    width: 130px;
-    height: 70px;
+    width: 330px;
+    margin: 0 10px;
+    height: 370px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     color: black;
     h3 {
-      font-size: 12px;
+      font-size: 2em;
     }
   `;
   return (
     <Container>
       <Marquee>
-        {randomWords.map((word, index) => (
+        {filteredWordMeanings.map(({ word, meaning }, index) => (
           <WordBox key={index}>
             <h3>{word}</h3>
+            <p>{meaning}</p>
           </WordBox>
         ))}
       </Marquee>
