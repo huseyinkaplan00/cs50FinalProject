@@ -67,24 +67,6 @@ function App() {
 
   const [randomWords, setRandomWords] = React.useState([]);
   const [wordMeanings, setWordMeanings] = React.useState([]);
-  const [wordsPhoto, setWordsPhoto] = React.useState([]);
-
-  const getWordImage = async wordMeanings => {
-    try {
-      const response = await axios.get(
-        `https://pixabay.com/api/?key=41114972-550a8ff6a7b32dec7a2800aae&q=yellow+flowers&image_type=photo`
-      );
-      setWordsPhoto(response.data.hits[0].largeImageURL);
-      console.log('wordsPhoto', wordsPhoto);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  // write if length > 0 ...
-  React.useEffect(() => {
-    getWordImage();
-  }, [wordMeanings]);
 
   const getRandomWords = async () => {
     try {
@@ -155,7 +137,6 @@ function App() {
               control={
                 <MaterialUISwitch
                   sx={{ m: 1 }}
-                  defaultChecked
                   checked={darkMode}
                   onChange={() => setDarkMode(!darkMode)}
                   name={darkMode ? 'dark' : 'light'}
@@ -173,7 +154,7 @@ function App() {
           setWords={setWords}
         />
         {words === '' ? (
-          <Home randomWords={randomWords} wordMeanings={wordMeanings} />
+          <Home randomWords={randomWords} wordMeanings={wordMeanings} setWordMeanings={setWordMeanings} />
         ) : (
           <Defines
             meanings={meanings}
