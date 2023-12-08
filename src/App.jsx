@@ -70,7 +70,7 @@ function App() {
 
   const getRandomWords = async () => {
     try {
-      const response = await axios.get(`https://random-word-api.herokuapp.com/word?number=13`);
+      const response = await axios.get(`https://random-word-api.herokuapp.com/word?number=23`);
       setRandomWords(response.data);
       getWordMeanings(response.data);
     } catch (error) {
