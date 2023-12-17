@@ -11,6 +11,11 @@
     box-sizing: border-box;
 }
 
+#root {
+    position: relative;
+    z-index: 99;
+}
+
 body {
     font-family: 'Open Sans', sans-serif;
 }
@@ -21,6 +26,7 @@ body {
     height: 100%;
     position: relative;
     transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+    z-index: -2;
 
 
     //button for light to dark theme

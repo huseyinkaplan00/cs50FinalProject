@@ -1,11 +1,30 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,800;1,300&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+.bg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-image: url("/public/bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+  z-index: -1;
+}
+
 .header {
-  height: 35vh;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   flex-direction: column;
+  z-index: 99;
+  position: relative;
+  background: rgba(0, 0, 0, 0.831372549);
+  border-radius: 9px;
+  border: 3px white solid;
+  height: 500px;
 }
 .header a {
   text-decoration: none;
@@ -117,20 +136,16 @@
 }
 
 main {
-  position: relative;
-  margin-top: 10em;
-  width: 100%;
-  height: 100%;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
 }
-
 .item {
-  width: 200px;
-  height: 300px;
+  width: 50px;
+  height: 50px;
   list-style-type: none;
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  z-index: 99;
+  bottom: 0;
+  left: 0;
   z-index: 1;
   background-position: center;
   background-size: cover;
@@ -141,7 +156,7 @@ main {
 .item:nth-child(1), .item:nth-child(2) {
   left: 0;
   top: 0;
-  width: 500px;
+  width: 100%;
   height: 100%;
   transform: none;
   border-radius: 0;
@@ -149,17 +164,31 @@ main {
   opacity: 1;
 }
 .item:nth-child(3) {
-  left: 50%;
+  left: 10%;
+}
+.item:nth-child(3) {
+  left: calc(10% + 50px);
 }
 .item:nth-child(4) {
-  left: calc(50% + 220px);
+  left: calc(10% + 100px);
 }
 .item:nth-child(5) {
-  left: calc(50% + 440px);
+  left: calc(10% + 150px);
 }
 .item:nth-child(6) {
-  left: calc(50% + 660px);
-  opacity: 0;
+  left: calc(10% + 200px);
+}
+.item:nth-child(7) {
+  left: calc(10% + 250px);
+}
+.item:nth-child(8) {
+  left: calc(10% + 300px);
+}
+.item:nth-child(9) {
+  left: calc(10% + 350px);
+}
+.item:nth-child(10) {
+  left: calc(10% + 400px);
 }
 
 .content {
@@ -202,7 +231,7 @@ main {
 @keyframes show {
   0% {
     filter: blur(5px);
-    transform: translateY(calc(-50% + 75px));
+    transform: translateY(calc(-10% + 175px));
   }
   100% {
     opacity: 1;
@@ -296,6 +325,11 @@ main {
   box-sizing: border-box;
 }
 
+#root {
+  position: relative;
+  z-index: 99;
+}
+
 body {
   font-family: "Open Sans", sans-serif;
 }
@@ -305,6 +339,7 @@ body {
   height: 100%;
   position: relative;
   transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+  z-index: -2;
 }
 .app .app--theme {
   position: absolute;
