@@ -56,15 +56,15 @@ main {
     }
 
     &:nth-child(3) {
-        left: calc(10% + 50px);
+        left: calc(10% + 400px);
     }
 
     &:nth-child(4) {
-        left: calc(10% + 100px);
+        left: calc(10% + 450px);
     }
 
     &:nth-child(5) {
-        left: calc(10% + 150px);
+        left: calc(10% + 550px);
     }
 
     &:nth-child(6) {
@@ -91,9 +91,9 @@ main {
 .content {
     width: min(30vw, 400px);
     position: absolute;
-    top: 50%;
-    left: 3rem;
-    transform: translateY(-50%);
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -70%);
     font: 400 0.85rem helvetica, sans-serif;
     color: white;
     text-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
@@ -140,6 +140,7 @@ main {
 }
 
 .nav {
+    display: flex;
     position: absolute;
     bottom: 2rem;
     left: 50%;
