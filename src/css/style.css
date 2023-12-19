@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,800;1,300&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,800;1,300&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap&family=Bebas+Neue&display=swap&family=Kalnia:wght@300&display=swap");
 .bg {
   position: fixed;
   width: 100%;
@@ -21,22 +21,21 @@
   flex-direction: column;
   z-index: 99;
   position: relative;
-  background: rgba(0, 0, 0, 0.831372549);
-  border-radius: 9px;
-  border: 3px white solid;
-  height: 500px;
+  background: rgba(0, 0, 0, 0.85);
+  border-radius: 5px;
+  height: 262px;
 }
 .header a {
   text-decoration: none;
 }
 .header a .header__title {
   text-align: center;
-  color: #4d83bd;
+  color: white;
   font-weight: 500;
   transition: all 0.3s ease-in-out;
 }
 .header a .header__title:hover {
-  color: rgb(118, 104, 151);
+  color: rgb(201, 197, 197);
 }
 .header .header__inputs {
   display: flex;
@@ -139,8 +138,8 @@ main {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
 }
 .item {
-  width: 50px;
-  height: 50px;
+  width: 100px;
+  height: 100px;
   list-style-type: none;
   position: absolute;
   z-index: 99;
@@ -167,13 +166,13 @@ main {
   left: 10%;
 }
 .item:nth-child(3) {
-  left: calc(10% + 50px);
+  left: calc(10% + 400px);
 }
 .item:nth-child(4) {
-  left: calc(10% + 100px);
+  left: calc(10% + 450px);
 }
 .item:nth-child(5) {
-  left: calc(10% + 150px);
+  left: calc(10% + 550px);
 }
 .item:nth-child(6) {
   left: calc(10% + 200px);
@@ -192,25 +191,37 @@ main {
 }
 
 .content {
-  width: min(30vw, 400px);
+  border-radius: 5px;
+  width: 100%;
+  max-width: 300px;
   position: absolute;
-  top: 50%;
-  left: 3rem;
-  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.474);
+  background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png");
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -75%);
   font: 400 0.85rem helvetica, sans-serif;
   color: white;
   text-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
   opacity: 0;
   display: none;
+  padding: 1.5em;
 }
 .content .title {
-  font-family: "arial-black";
+  font-family: "Bebas Neue", sans-serif;
   text-transform: uppercase;
+  font-size: 3rem;
 }
 .content .description {
   line-height: 1.7;
   margin: 1rem 0 1.5rem;
-  font-size: 0.8rem;
+  font-size: 1rem;
+  font-family: "Kalnia", serif;
+  padding: 1em;
+  -webkit-backdrop-filter: blur(15px);
+          backdrop-filter: blur(15px);
+  background-color: rgba(0, 0, 0, 0.557);
 }
 .content button {
   width: -moz-fit-content;
@@ -239,8 +250,9 @@ main {
   }
 }
 .nav {
+  display: flex;
   position: absolute;
-  bottom: 2rem;
+  bottom: 24rem;
   left: 50%;
   transform: translateX(-50%);
   z-index: 5;
@@ -261,62 +273,6 @@ main {
   background-color: rgba(255, 255, 255, 0.3);
 }
 
-@media (width > 650px) and (width < 900px) {
-  .content .title {
-    font-size: 1rem;
-  }
-  .content .description {
-    font-size: 0.7rem;
-  }
-  .content button {
-    font-size: 0.7rem;
-  }
-  .item {
-    width: 160px;
-    height: 270px;
-  }
-  .item:nth-child(3) {
-    left: 50%;
-  }
-  .item:nth-child(4) {
-    left: calc(50% + 170px);
-  }
-  .item:nth-child(5) {
-    left: calc(50% + 340px);
-  }
-  .item:nth-child(6) {
-    left: calc(50% + 510px);
-    opacity: 0;
-  }
-}
-@media (width < 650px) {
-  .content .title {
-    font-size: 0.9rem;
-  }
-  .content .description {
-    font-size: 0.65rem;
-  }
-  .content button {
-    font-size: 0.7rem;
-  }
-  .item {
-    width: 130px;
-    height: 220px;
-  }
-  .item:nth-child(3) {
-    left: 50%;
-  }
-  .item:nth-child(4) {
-    left: calc(50% + 140px);
-  }
-  .item:nth-child(5) {
-    left: calc(50% + 280px);
-  }
-  .item:nth-child(6) {
-    left: calc(50% + 420px);
-    opacity: 0;
-  }
-}
 *,
 *::before,
 *::after {
@@ -332,6 +288,7 @@ main {
 
 body {
   font-family: "Open Sans", sans-serif;
+  overflow: hidden;
 }
 
 .app {

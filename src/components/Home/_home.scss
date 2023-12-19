@@ -22,9 +22,8 @@ main {
 }
 
 .item {
-    width: 50px;
-    height: 50px;
-
+    width: 100px;
+    height: 100px;
     list-style-type: none;
     position: absolute;
     z-index: 99;
@@ -89,26 +88,40 @@ main {
 }
 
 .content {
-    width: min(30vw, 400px);
+    border-radius: 5px;
+    width: 100%;
+    max-width: 300px;
     position: absolute;
-    top: 70%;
+    background-color: rgba(0, 0, 0, 0.474);
+    background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png");
+    /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+    top: 75%;
     left: 50%;
-    transform: translate(-50%, -70%);
+    transform: translate(-50%, -75%);
     font: 400 0.85rem helvetica, sans-serif;
     color: white;
     text-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
     opacity: 0;
     display: none;
+    padding: 1.5em;
 
     & .title {
-        font-family: 'arial-black';
+
+        font-family: 'Bebas Neue', sans-serif;
         text-transform: uppercase;
+        font-size: 3rem;
     }
+
 
     & .description {
         line-height: 1.7;
         margin: 1rem 0 1.5rem;
-        font-size: 0.8rem;
+        font-size: 1rem;
+        font-family: 'Kalnia', serif;
+        padding: 1em;
+        backdrop-filter: blur(15px);
+        background-color: rgba(0, 0, 0, 0.557);
+
     }
 
     & button {
@@ -142,7 +155,7 @@ main {
 .nav {
     display: flex;
     position: absolute;
-    bottom: 2rem;
+    bottom: 24rem;
     left: 50%;
     transform: translateX(-50%);
     z-index: 5;
@@ -163,78 +176,80 @@ main {
     }
 }
 
-@media (width > 650px) and (width < 900px) {
-    .content {
-        & .title {
-            font-size: 1rem;
-        }
+@media (max-width: 650px) {}
 
-        & .description {
-            font-size: 0.7rem;
-        }
+// @media (width > 650px) and (width < 900px) {
+//     .content {
+//         & .title {
+//             font-size: 1rem;
+//         }
 
-        & button {
-            font-size: 0.7rem;
-        }
-    }
+//         & .description {
+//             font-size: 0.7rem;
+//         }
 
-    .item {
-        width: 160px;
-        height: 270px;
+//         & button {
+//             font-size: 0.7rem;
+//         }
+//     }
 
-        &:nth-child(3) {
-            left: 50%;
-        }
+//     .item {
+//         width: 160px;
+//         height: 270px;
 
-        &:nth-child(4) {
-            left: calc(50% + 170px);
-        }
+//         &:nth-child(3) {
+//             left: 50%;
+//         }
 
-        &:nth-child(5) {
-            left: calc(50% + 340px);
-        }
+//         &:nth-child(4) {
+//             left: calc(50% + 170px);
+//         }
 
-        &:nth-child(6) {
-            left: calc(50% + 510px);
-            opacity: 0;
-        }
-    }
-}
+//         &:nth-child(5) {
+//             left: calc(50% + 340px);
+//         }
 
-@media (width < 650px) {
-    .content {
-        & .title {
-            font-size: 0.9rem;
-        }
+//         &:nth-child(6) {
+//             left: calc(50% + 510px);
+//             opacity: 0;
+//         }
+//     }
+// }
 
-        & .description {
-            font-size: 0.65rem;
-        }
+// @media (width < 650px) {
+//     .content {
+//         & .title {
+//             font-size: 0.9rem;
+//         }
 
-        & button {
-            font-size: 0.7rem;
-        }
-    }
+//         & .description {
+//             font-size: 0.65rem;
+//         }
 
-    .item {
-        width: 130px;
-        height: 220px;
+//         & button {
+//             font-size: 0.7rem;
+//         }
+//     }
 
-        &:nth-child(3) {
-            left: 50%;
-        }
+//     .item {
+//         width: 130px;
+//         height: 220px;
 
-        &:nth-child(4) {
-            left: calc(50% + 140px);
-        }
+//         &:nth-child(3) {
+//             left: 50%;
+//         }
 
-        &:nth-child(5) {
-            left: calc(50% + 280px);
-        }
+//         &:nth-child(4) {
+//             left: calc(50% + 140px);
+//         }
 
-        &:nth-child(6) {
-            left: calc(50% + 420px);
-            opacity: 0;
-        }
-    }
-}
+//         &:nth-child(5) {
+//             left: calc(50% + 280px);
+//         }
+
+//         &:nth-child(6) {
+//             left: calc(50% + 420px);
+//             opacity: 0;
+//         }
+//     }
+// }
