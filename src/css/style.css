@@ -24,6 +24,8 @@
   background: rgba(0, 0, 0, 0.85);
   border-radius: 5px;
   height: 262px;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
 }
 .header a {
   text-decoration: none;
@@ -128,6 +130,13 @@
   color: black;
 }
 
+#root > div > div > main > ul > li:nth-child(2) > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -138,17 +147,18 @@ main {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
 }
 .item {
-  width: 100px;
-  height: 100px;
+  width: 170px;
+  height: 170px;
   list-style-type: none;
   position: absolute;
   z-index: 99;
   bottom: 0;
-  left: 0;
+  transform: translateY(-50%);
+  left: 50%;
   z-index: 1;
+  border-radius: 50%;
   background-position: center;
   background-size: cover;
-  border-radius: 20px;
   box-shadow: 0 20px 30px rgba(130, 54, 54, 0.3) inset;
   transition: transform 0.1s, left 0.75s, top 0.75s, width 0.75s, height 0.75s;
 }
@@ -163,44 +173,40 @@ main {
   opacity: 1;
 }
 .item:nth-child(3) {
-  left: 10%;
-}
-.item:nth-child(3) {
-  left: calc(10% + 400px);
+  left: 27vw;
 }
 .item:nth-child(4) {
-  left: calc(10% + 450px);
+  left: calc(27vw + 200px);
 }
 .item:nth-child(5) {
-  left: calc(10% + 550px);
+  left: calc(27vw + 400px);
 }
 .item:nth-child(6) {
-  left: calc(10% + 200px);
+  left: calc(27vw + 600px);
 }
 .item:nth-child(7) {
-  left: calc(10% + 250px);
+  left: calc(27vw + 800px);
 }
 .item:nth-child(8) {
-  left: calc(10% + 300px);
-}
-.item:nth-child(9) {
-  left: calc(10% + 350px);
-}
-.item:nth-child(10) {
-  left: calc(10% + 400px);
+  left: calc(27vw + 1000px);
 }
 
 .content {
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
   border-radius: 5px;
   width: 100%;
-  max-width: 300px;
+  height: 280px;
   position: absolute;
+  overflow-y: scroll;
+  overflow-x: hidden;
   background-color: rgba(0, 0, 0, 0.474);
   background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png");
   /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
-  top: 75%;
+  top: 51%;
   left: 50%;
-  transform: translate(-50%, -75%);
+  max-width: 380px;
+  transform: translate(-50%, -51%);
   font: 400 0.85rem helvetica, sans-serif;
   color: white;
   text-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
@@ -216,6 +222,8 @@ main {
 .content .description {
   line-height: 1.7;
   margin: 1rem 0 1.5rem;
+  overflow-y: scroll;
+  height: 87px;
   font-size: 1rem;
   font-family: "Kalnia", serif;
   padding: 1em;
@@ -242,7 +250,7 @@ main {
 @keyframes show {
   0% {
     filter: blur(5px);
-    transform: translateY(calc(-10% + 175px));
+    transform: translateY(100%);
   }
   100% {
     opacity: 1;
@@ -252,7 +260,7 @@ main {
 .nav {
   display: flex;
   position: absolute;
-  bottom: 24rem;
+  top: 18.5rem;
   left: 50%;
   transform: translateX(-50%);
   z-index: 5;
@@ -273,6 +281,199 @@ main {
   background-color: rgba(255, 255, 255, 0.3);
 }
 
+@media only screen and (max-width: 389px) {
+  .item {
+    width: 100px;
+    height: 100px;
+    top: 96%;
+    transform: translate(-50%, -96%);
+  }
+  .item:nth-child(4) {
+    left: calc(27vw + 170px);
+  }
+  .content {
+    max-width: 300px;
+    height: 250px;
+    top: 64%;
+    transform: translate(-50%, -64%);
+  }
+  .content .title {
+    text-align: center;
+  }
+  .content .description {
+    height: 100px;
+    overflow-y: scroll;
+    font-size: 0.8rem;
+  }
+  .nav {
+    top: 80%;
+  }
+}
+@media only screen and (min-width: 390px) and (max-width: 500px) {
+  .header {
+    height: 285px;
+  }
+  .content {
+    top: 54%;
+    transform: translate(-50%, -54%);
+    height: 286px;
+  }
+  .item {
+    width: 150px;
+    height: 150px;
+  }
+  .item:nth-child(3) {
+    left: 12vw;
+  }
+  .item:nth-child(4) {
+    left: calc(12vw + 169px);
+  }
+  .nav {
+    bottom: 5%;
+    top: unset;
+  }
+}
+@media only screen and (min-width: 501px) and (max-width: 800px) {
+  .header {
+    height: 366px;
+  }
+  .content {
+    top: 57%;
+    transform: translate(-50%, -57%);
+    height: 336px;
+    max-width: 488px;
+  }
+  .content .description {
+    font-size: 1.3rem;
+    height: 109px;
+  }
+  .content button {
+    padding: 0.75rem;
+    font-size: 1.3rem;
+  }
+  .item {
+    transform: translateY(-33%);
+    width: 200px;
+    height: 200px;
+  }
+  .item:nth-child(3) {
+    left: 3vw;
+  }
+  .item:nth-child(4) {
+    left: calc(3vw + 169px);
+  }
+  .item:nth-child(5) {
+    left: calc(3vw + 338px);
+  }
+  .item:nth-child(6) {
+    left: calc(3vw + 507px);
+  }
+  .nav {
+    bottom: 5%;
+    top: unset;
+  }
+}
+@media only screen and (min-width: 801px) {
+  .header {
+    height: 388px;
+  }
+  .header h1 {
+    font-size: 4rem;
+  }
+  .content {
+    top: 57%;
+    transform: translate(-50%, -57%);
+    height: 396px;
+    max-width: 488px;
+  }
+  .content .description {
+    font-size: 1.3rem;
+    height: 109px;
+  }
+  .content button {
+    padding: 0.75rem;
+    font-size: 1.3rem;
+  }
+  .item {
+    transform: translateY(-33%);
+    width: 160px;
+    height: 160px;
+  }
+  .item:nth-child(3) {
+    left: 3vw;
+  }
+  .item:nth-child(4) {
+    left: calc(3vw + 169px);
+  }
+  .item:nth-child(5) {
+    left: calc(3vw + 338px);
+  }
+  .item:nth-child(6) {
+    left: calc(3vw + 507px);
+  }
+  .item:nth-child(7) {
+    left: calc(3vw + 676px);
+  }
+  .item:nth-child(8) {
+    left: calc(3vw + 845px);
+  }
+  .item:nth-child(9) {
+    left: calc(3vw + 1014px);
+  }
+  .nav {
+    bottom: 5%;
+    top: unset;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .header {
+    height: 336px;
+  }
+  .content {
+    top: 57%;
+    transform: translate(-50%, -57%);
+    height: 336px;
+    max-width: 488px;
+  }
+  .content .description {
+    font-size: 1.3rem;
+    height: 109px;
+  }
+  .content button {
+    padding: 0.75rem;
+    font-size: 1.3rem;
+  }
+  .item {
+    transform: translateY(-33%);
+    width: 200px;
+    height: 200px;
+  }
+  .item:nth-child(3) {
+    left: 3vw;
+  }
+  .item:nth-child(4) {
+    left: calc(3vw + 169px);
+  }
+  .item:nth-child(5) {
+    left: calc(3vw + 338px);
+  }
+  .item:nth-child(6) {
+    left: calc(3vw + 507px);
+  }
+  .item:nth-child(7) {
+    left: calc(3vw + 676px);
+  }
+  .item:nth-child(8) {
+    left: calc(3vw + 845px);
+  }
+  .item:nth-child(9) {
+    left: calc(3vw + 1014px);
+  }
+  .nav {
+    bottom: 5%;
+    top: unset;
+  }
+}
 *,
 *::before,
 *::after {
@@ -284,6 +485,7 @@ main {
 #root {
   position: relative;
   z-index: 99;
+  overflow: hidden;
 }
 
 body {
@@ -302,6 +504,7 @@ body {
   position: absolute;
   top: 1em;
   right: 10px;
+  z-index: 100;
 }
 .app.dark-mode {
   background-color: #001d3d;

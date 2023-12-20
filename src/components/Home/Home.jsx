@@ -133,7 +133,7 @@ import React from 'react';
 //   }
 // `;
 
-export default function Home({ wordMeanings, setWordMeanings }) {
+export default function Home({ wordMeanings, setWordMeanings, setWords }) {
   const activate = e => {
     const slider = document.querySelector('.slider');
     const items = slider.querySelectorAll('.item');
@@ -187,23 +187,25 @@ export default function Home({ wordMeanings, setWordMeanings }) {
 
   return (
     <>
-      <main>
-        <ul className="slider">
-          {filteredWordMeanings.map(({ word, meaning, image }, index) => (
-            <li key={index} className="item" style={{ backgroundImage: `url(${image})` }}>
-              <div className="content">
-                <h2 className="title">{word}</h2>
-                <p className="description">{meaning}</p>
-                <button>Read More</button>
-              </div>
-            </li>
-          ))}
-        </ul>
-        <nav className="nav">
-          <div className="btn prev" />
-          <div className="btn next" />
-        </nav>
-      </main>
+      {filteredWordMeanings.length > 0 && (
+        <main>
+          <ul className="slider">
+            {filteredWordMeanings.map(({ word, meaning, image }, index) => (
+              <li key={index} className="item" style={{ backgroundImage: `url(${image})` }}>
+                <div className="content">
+                  <h2 className="title">{word}</h2>
+                  <p className="description">{meaning}</p>
+                  <button onClick={() => setWords(word)}>Read More</button>
+                </div>
+              </li>
+            ))}
+          </ul>
+          <nav className="nav">
+            <div className="btn prev" />
+            <div className="btn next" />
+          </nav>
+        </main>
+      )}
     </>
   );
 }
@@ -211,5 +213,6 @@ export default function Home({ wordMeanings, setWordMeanings }) {
 // // declaring prop types for type checking.
 Home.propTypes = {
   wordMeanings: PropTypes.array.isRequired,
-  setWordMeanings: PropTypes.func.isRequired
+  setWordMeanings: PropTypes.func.isRequired,
+  setWords: PropTypes.func.isRequired
 };

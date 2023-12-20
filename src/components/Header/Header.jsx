@@ -34,10 +34,13 @@ const Header = ({ allCategories, setAllCategories, words, setWords, darkMode }) 
   return (
     <>
       <div className="bg"></div>
-      <div className="header">
+      <div style={{ background: darkMode ? 'rgb(0, 0, 0, 0.85)' : '#ffffffb8' }} className="header">
         <a href="index.html">
           {' '}
-          <h1 className="header__title"> {words ? words : 'Your Dictionary'} </h1>
+          <h1 style={{ color: darkMode ? 'white' : 'black' }} className="header__title">
+            {' '}
+            {words ? words : 'Your Dictionary'}{' '}
+          </h1>
         </a>
         <div className="header__inputs">
           <ThemeProvider theme={darkTheme}>

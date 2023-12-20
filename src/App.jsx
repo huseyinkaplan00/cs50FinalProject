@@ -154,7 +154,13 @@ function App() {
           setWords={setWords}
         />
         {words === '' ? (
-          <Home randomWords={randomWords} wordMeanings={wordMeanings} setWordMeanings={setWordMeanings} />
+          <Home
+            setWords={setWords}
+            words={words}
+            randomWords={randomWords}
+            wordMeanings={wordMeanings}
+            setWordMeanings={setWordMeanings}
+          />
         ) : (
           <Defines
             meanings={meanings}
