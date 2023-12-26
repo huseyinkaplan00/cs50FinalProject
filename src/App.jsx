@@ -70,7 +70,7 @@ function App() {
 
   const getRandomWords = async () => {
     try {
-      const response = await axios.get(`https://random-word-api.herokuapp.com/word?number=23`);
+      const response = await axios.get(`https://random-word-api.herokuapp.com/word?number=27`);
       setRandomWords(response.data);
       getWordMeanings(response.data);
     } catch (error) {
@@ -155,6 +155,7 @@ function App() {
         />
         {words === '' ? (
           <Home
+            darkMode={darkMode}
             setWords={setWords}
             words={words}
             randomWords={randomWords}

@@ -1,15 +1,35 @@
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import React from 'react';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
+import Stack from '@mui/material/Stack';
+import IconButton from '@mui/material/IconButton';
+export default function Home({ wordMeanings, setWordMeanings, setWords, words, darkMode }) {
+  const [counter, setCounter] = React.useState(0);
+  const [maxCounter] = React.useState(3);
 
-export default function Home({ wordMeanings, setWordMeanings, setWords }) {
   const activate = e => {
     const slider = document.querySelector('.slider');
     const items = slider.querySelectorAll('.item');
 
-    if (e.target.matches('.next')) {
+    // Ebeveyn öğesinin sınıfını kontrol et
+    let parent = e.target.parentElement;
+
+    if (parent && parent.matches('.next')) {
       slider.append(items[0]);
-    } else if (e.target.matches('.prev')) {
+    } else if (parent && parent.matches('.prev')) {
+      slider.prepend(items[items.length - 1]);
+    }
+  };
+
+  const moveSlider = direction => {
+    const slider = document.querySelector('.slider');
+    const items = slider.querySelectorAll('.item');
+
+    if (direction === 'next') {
+      slider.append(items[0]);
+    } else if (direction === 'prev') {
       slider.prepend(items[items.length - 1]);
     }
   };
@@ -17,7 +37,6 @@ export default function Home({ wordMeanings, setWordMeanings, setWords }) {
   React.useEffect(() => {
     document.addEventListener('click', activate);
 
-    // Component kaldırıldığında event listener'ı temizle
     return () => {
       document.removeEventListener('click', activate);
     };
@@ -25,9 +44,9 @@ export default function Home({ wordMeanings, setWordMeanings, setWords }) {
 
   const filteredWordMeanings = React.useMemo(
     () =>
-      wordMeanings.filter(
-        wordMeaning => wordMeaning.meaning !== 'Definition not available' && wordMeaning.image !== null
-      ),
+      wordMeanings
+        .filter(wordMeaning => wordMeaning.meaning !== 'Definition not available' && wordMeaning.image !== null)
+        .slice(0, 6),
     [wordMeanings]
   );
 
@@ -53,10 +72,17 @@ export default function Home({ wordMeanings, setWordMeanings, setWords }) {
   };
 
   React.useEffect(() => {
-    if (filteredWordMeanings && filteredWordMeanings.length > 5) {
-      getWordImage();
-    }
-  }, [filteredWordMeanings]);
+    const interval = setInterval(() => {
+      if (counter < maxCounter) {
+        getWordImage();
+        setCounter(prevCounter => prevCounter + 1);
+      } else {
+        clearInterval(interval);
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [counter]);
 
   return (
     <>
@@ -65,17 +91,36 @@ export default function Home({ wordMeanings, setWordMeanings, setWords }) {
           <ul className="slider">
             {filteredWordMeanings.map(({ word, meaning, image }, index) => (
               <li key={index} className="item" style={{ backgroundImage: `url(${image})` }}>
-                <div className="content">
-                  <h2 className="title">{word}</h2>
+                <div style={{ background: darkMode ? 'rgb(0, 0, 0, 0.60)' : '#ffffffb8' }} className="content">
+                  <h2
+                    style={{
+                      color: darkMode ? 'white' : 'black'
+                    }}
+                    className="title">
+                    {word}
+                  </h2>
                   <p className="description">{meaning}</p>
-                  <button onClick={() => setWords(word)}>Read More</button>
+                  <button
+                    style={{
+                      border: darkMode ? 'solid white 3px' : 'solid black 3px',
+                      color: darkMode ? 'white' : 'black'
+                    }}
+                    onClick={() => setWords(word)}>
+                    Read More
+                  </button>
                 </div>
               </li>
             ))}
           </ul>
           <nav className="nav">
-            <div className="btn prev" />
-            <div className="btn next" />
+            <Stack direction="row" spacing={2}>
+              <IconButton variant="outlined" className="btn prev" color="black" onClick={() => moveSlider('prev')}>
+                <NavigateBeforeIcon />
+              </IconButton>
+              <IconButton className="btn next" color="black" onClick={() => moveSlider('next')}>
+                <NavigateNextIcon />
+              </IconButton>
+            </Stack>
           </nav>
         </main>
       )}

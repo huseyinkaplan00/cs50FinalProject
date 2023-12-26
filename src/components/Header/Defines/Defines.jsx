@@ -50,7 +50,11 @@ const Defines = ({ meanings, darkMode, error }) => {
                     </a>{' '}
                     (<span> {item.partOfSpeech ? item.partOfSpeech : '🥲'})</span>
                     {meanings.map((item, index) => (
-                      <em key={index}>{item.phonetic ? item.phonetic : ''}</em>
+                      <em
+                        style={{ backgroundColor: darkMode ? 'black' : 'white', color: darkMode ? 'white' : 'black' }}
+                        key={index}>
+                        {item.phonetic ? item.phonetic : ''}
+                      </em>
                     ))}
                   </div>
                 </div>

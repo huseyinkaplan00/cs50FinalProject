@@ -21,7 +21,7 @@
 main {
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
 
-    .slider {}
+
 }
 
 .item {
@@ -53,28 +53,22 @@ main {
     }
 
     &:nth-child(3) {
-        left: 27vw;
+        left: 50%;
     }
 
     &:nth-child(4) {
-        left: calc(27vw + 200px);
+        left: 50%;
     }
 
     &:nth-child(5) {
-        left: calc(27vw + 400px);
+        left: 50%;
     }
 
     &:nth-child(6) {
-        left: calc(27vw + 600px);
+        left: 50%;
     }
 
-    &:nth-child(7) {
-        left: calc(27vw + 800px);
-    }
 
-    &:nth-child(8) {
-        left: calc(27vw + 1000px);
-    }
 }
 
 .content {
@@ -154,18 +148,9 @@ main {
     z-index: 5;
     user-select: none;
 
-    & .btn {
-        background-color: rgba(255, 255, 255, 0.5);
-        color: rgba(0, 0, 0, 0.7);
-        border: 2px solid rgba(0, 0, 0, 0.6);
-        margin: 0 0.25rem;
-        padding: 0.75rem;
-        border-radius: 50%;
-        cursor: pointer;
-
-        &:hover {
-            background-color: rgba(255, 255, 255, 0.3);
-        }
+    .prev,
+    .next {
+        border: 3px solid white;
     }
 }
 
@@ -180,8 +165,20 @@ main {
         top: 96%;
         transform: translate(-50%, -96%);
 
+        &:nth-child(3) {
+            left: 50%;
+        }
+
         &:nth-child(4) {
-            left: calc(27vw + 170px);
+            left: 50%;
+        }
+
+        &:nth-child(5) {
+            left: 50%;
+        }
+
+        &:nth-child(6) {
+            left: 50%;
         }
     }
 
@@ -210,9 +207,7 @@ main {
 //  medium devices
 
 @media only screen and (min-width: 390px) and (max-width: 500px) {
-    .header {
-        height: 285px;
-    }
+
 
     .content {
         top: 54%;
@@ -221,15 +216,29 @@ main {
     }
 
     .item {
-        width: 150px;
-        height: 150px;
+
+        position: absolute;
+        top: 90%;
+        left: 50%;
+        transform: translate(-50%, -90%);
+
+        width: 130px;
+        height: 130px;
 
         &:nth-child(3) {
-            left: 12vw;
+            left: 50%;
         }
 
         &:nth-child(4) {
-            left: calc(12vw + 169px);
+            left: 50%;
+        }
+
+        &:nth-child(5) {
+            left: 50%;
+        }
+
+        &:nth-child(6) {
+            left: 50%;
         }
     }
 
@@ -264,24 +273,27 @@ main {
     }
 
     .item {
-        transform: translateY(-33%);
-        width: 200px;
-        height: 200px;
+        top: 90%;
+        left: 50%;
+        transform: translate(-50%, -90%);
+
+        width: 180px;
+        height: 180px;
 
         &:nth-child(3) {
-            left: 3vw;
+            left: 50%;
         }
 
         &:nth-child(4) {
-            left: calc(3vw + 169px);
+            left: 50%;
         }
 
         &:nth-child(5) {
-            left: calc(3vw + 338px);
+            left: 50%;
         }
 
         &:nth-child(6) {
-            left: calc(3vw + 507px);
+            left: 50%;
         }
     }
 
@@ -293,133 +305,183 @@ main {
 
 //  extra large devices
 
-@media only screen and (min-width: 801px) {
-    .header {
-        height: 388px;
 
-        h1 {
-            font-size: 4rem;
-        }
-    }
 
-    .content {
-        top: 57%;
-        transform: translate(-50%, -57%);
-        height: 396px;
-        max-width: 488px;
 
-        .description {
-            font-size: 1.3rem;
-            height: 109px;
-        }
+@media screen {}
 
-        button {
-            padding: 0.75rem;
-            font-size: 1.3rem;
-        }
-    }
-
+@media only screen and (min-width: 801px) and (max-width: 1200px) {
     .item {
-        transform: translateY(-33%);
-        width: 160px;
-        height: 160px;
+        width: 150px;
+        height: 150px;
+        top: 96%;
+        transform: translate(-50%, -96%);
 
         &:nth-child(3) {
-            left: 3vw;
+            left: 50%;
         }
 
         &:nth-child(4) {
-            left: calc(3vw + 169px);
+            left: 50%
         }
 
         &:nth-child(5) {
-            left: calc(3vw + 338px);
+            left: 50%;
         }
-
-        &:nth-child(6) {
-            left: calc(3vw + 507px);
-        }
-
-        &:nth-child(7) {
-            left: calc(3vw + 676px);
-        }
-
-        &:nth-child(8) {
-            left: calc(3vw + 845px);
-        }
-
-        &:nth-child(9) {
-            left: calc(3vw + 1014px);
-        }
-
     }
 
     .nav {
-        bottom: 5%;
-        top: unset;
+        top: 75%;
     }
 }
 
-//  extra extra large devices
 
-@media only screen and (min-width: 1200px) {
-    .header {
-        height: 336px;
+//height queries ##
+
+@media (min-height: 1050px) {
+    html {
+        font-size: 24px;
     }
 
-    .content {
-        top: 57%;
-        transform: translate(-50%, -57%);
-        height: 336px;
-        max-width: 488px;
-
-        .description {
-            font-size: 1.3rem;
-            height: 109px;
-        }
-
-        button {
-            padding: 0.75rem;
-            font-size: 1.3rem;
-        }
+    .header {
+        height: 400px;
     }
 
     .item {
-        transform: translateY(-33%);
-        width: 200px;
-        height: 200px;
+        width: 170px;
+        height: 170px;
+        top: 96%;
+        transform: translate(-50%, -96%);
 
         &:nth-child(3) {
-            left: 3vw;
+            left: 50%;
         }
 
         &:nth-child(4) {
-            left: calc(3vw + 169px);
+            left: 50%;
         }
 
         &:nth-child(5) {
-            left: calc(3vw + 338px);
+            left: 50%;
         }
 
         &:nth-child(6) {
-            left: calc(3vw + 507px);
-        }
-
-        &:nth-child(7) {
-            left: calc(3vw + 676px);
-        }
-
-        &:nth-child(8) {
-            left: calc(3vw + 845px);
-        }
-
-        &:nth-child(9) {
-            left: calc(3vw + 1014px);
+            left: 50%;
         }
     }
 
+    .content {
+        height: 500px;
+        max-width: 488px;
+
+        .description {
+            font-size: 1.2rem;
+            height: 188px;
+        }
+
+    }
+
+    .defines {
+        max-height: 700px;
+    }
+}
+
+//height queries end ##
+
+@media only screen and (min-width: 1201px) and (max-width: 1600px) {
+    .item {
+        width: 170px;
+        height: 170px;
+        top: 96%;
+        transform: translate(-50%, -96%);
+
+        &:nth-child(3) {
+            left: 50%;
+        }
+
+        &:nth-child(4) {
+            left: 50%;
+        }
+
+        &:nth-child(5) {
+            left: 50%;
+        }
+
+        &:nth-child(6) {
+            left: 50%;
+        }
+    }
+
+    .content {
+        height: 500px;
+        max-width: 488px;
+
+        .description {
+            font-size: 1.2rem;
+            height: 188px;
+        }
+
+    }
+
+    .defines {
+        max-height: 700px;
+    }
+}
+
+@media only screen and (min-width: 1601px) and (max-width: 2000px) {
+    html {
+        font-size: 20px;
+    }
+
+    .item {
+        width: 170px;
+        height: 170px;
+        top: 96%;
+        transform: translate(-50%, -96%);
+
+        &:nth-child(3) {
+            left: 50%;
+        }
+
+        &:nth-child(4) {
+            left: 50%;
+        }
+
+        &:nth-child(5) {
+            left: 50%;
+        }
+
+        &:nth-child(6) {
+            left: 50%;
+        }
+    }
+
+    .header {
+        height: 365px;
+
+        .header__title {
+            font-size: 3.5rem;
+        }
+    }
+
+    .content {
+        height: 350px;
+        max-width: 453px;
+        transform: translate(-50%, -56%);
+        top: 56%;
+
+        .description {
+            font-size: 1rem;
+            height: 188px;
+        }
+
+    }
+
+    .defines {
+        max-height: 700px;
+    }
+
     .nav {
-        bottom: 5%;
-        top: unset;
+        top: 75%;
     }
 }
