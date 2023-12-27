@@ -5,7 +5,7 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import Stack from '@mui/material/Stack';
 import IconButton from '@mui/material/IconButton';
-export default function Home({ wordMeanings, setWordMeanings, setWords, words, darkMode }) {
+export default function Home({ wordMeanings, setWordMeanings, setWords, darkMode }) {
   const [counter, setCounter] = React.useState(0);
   const [maxCounter] = React.useState(3);
 
@@ -13,7 +13,6 @@ export default function Home({ wordMeanings, setWordMeanings, setWords, words, d
     const slider = document.querySelector('.slider');
     const items = slider.querySelectorAll('.item');
 
-    // Ebeveyn öğesinin sınıfını kontrol et
     let parent = e.target.parentElement;
 
     if (parent && parent.matches('.next')) {
@@ -128,10 +127,11 @@ export default function Home({ wordMeanings, setWordMeanings, setWords, words, d
   );
 }
 
-// // declaring prop types for type checking.
-// Home.propTypes = {
-//   wordMeanings: PropTypes.array.isRequired,
-//   setWordMeanings: PropTypes.func.isRequired,
-//   setWords: PropTypes.func.isRequired,
-//   filteredWordMeanings: PropTypes.array.isRequired
-// };
+// declaring prop types for type checking.
+Home.propTypes = {
+  wordMeanings: PropTypes.array.isRequired,
+  setWordMeanings: PropTypes.func.isRequired,
+  setWords: PropTypes.func.isRequired,
+  filteredWordMeanings: PropTypes.array.isRequired,
+  darkMode: PropTypes.bool.isRequired
+};

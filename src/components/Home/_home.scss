@@ -81,7 +81,6 @@ main {
     overflow-x: hidden;
     background-color: rgba(0, 0, 0, 0.474);
     background-image: url('https://www.transparenttextures.com/patterns/brushed-alum.png');
-    /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
     top: 51%;
     left: 50%;
     max-width: 380px;
@@ -303,12 +302,7 @@ main {
     }
 }
 
-//  extra large devices
 
-
-
-
-@media screen {}
 
 @media only screen and (min-width: 801px) and (max-width: 1200px) {
     .item {

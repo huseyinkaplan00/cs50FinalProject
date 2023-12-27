@@ -9,9 +9,7 @@ const Defines = ({ meanings, darkMode, error }) => {
   };
   return (
     <div className="defines">
-      {error && ( // if error is true, then show the error message.
-        <div className="defines--error">{error}</div>
-      )}
+      {error && <div className="defines--error">{error}</div>}
       {error === '' &&
         meanings.map(mean => {
           const wordsLink = mean.sourceUrls.map(item => (item ? item : ''));

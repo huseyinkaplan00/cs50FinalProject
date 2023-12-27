@@ -6,6 +6,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
 import languagesList from '../Data/languages';
+import PropTypes from 'prop-types';
 
 const Header = ({ allCategories, setAllCategories, words, setWords, darkMode }) => {
   const darkTheme = createTheme({
@@ -84,3 +85,12 @@ const Header = ({ allCategories, setAllCategories, words, setWords, darkMode }) 
 };
 
 export default Header;
+
+// declaring prop types for type checking.
+Header.propTypes = {
+  allCategories: PropTypes.string.isRequired,
+  setAllCategories: PropTypes.func.isRequired,
+  words: PropTypes.string.isRequired,
+  setWords: PropTypes.func.isRequired,
+  darkMode: PropTypes.bool.isRequired
+};

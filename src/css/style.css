@@ -115,6 +115,9 @@
   background-color: rgba(7, 7, 7, 0.42);
   color: dark;
 }
+.defines .defines--error {
+  margin-top: 1em;
+}
 
 .defines--home {
   font-size: 3rem;
@@ -203,7 +206,6 @@ main {
   overflow-x: hidden;
   background-color: rgba(0, 0, 0, 0.474);
   background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png");
-  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
   top: 51%;
   left: 50%;
   max-width: 380px;
